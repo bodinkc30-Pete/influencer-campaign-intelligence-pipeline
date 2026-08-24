@@ -1,0 +1,34 @@
+{
+  "config_version": "matching-v1",
+  "scenario_id": "portfolio_demo_tiktok_fee_cap_3000",
+  "scenario_type": "synthetic_portfolio_demo",
+  "scenario_name": "TikTok historical-evidence baseline with 3,000 fee cap",
+  "platform": "tiktok",
+  "max_fee": 3000,
+  "require_fee_history": true,
+  "minimum_campaign_count": 1,
+  "reject_campaign_history_dq_warn": false,
+  "shortlist_size": 30,
+  "neutral_missing_score": 50.0,
+  "caps": {
+    "campaign_count": 5,
+    "brand_count": 3
+  },
+  "weights": {
+    "historical_experience": 0.15,
+    "cross_brand_experience": 0.10,
+    "selection_history": 0.15,
+    "view_performance": 0.20,
+    "budget_headroom": 0.15,
+    "operational_reliability": 0.10,
+    "data_confidence": 0.15
+  },
+  "guardrails": {
+    "machine_learning": false,
+    "fuzzy_identity_resolution": false,
+    "category_fit_enabled": false,
+    "persona_fit_enabled": false,
+    "audience_fit_enabled": false,
+    "recency_enabled": false
+  }
+}

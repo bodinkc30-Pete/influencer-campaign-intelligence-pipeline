@@ -1,0 +1,19 @@
+{
+  "mapping_version": 1,
+  "privacy_note": "Example only. Keep the real workbook/sheet-to-campaign mapping in config/private/.",
+  "campaigns": [
+    {
+      "source_filename": "campaign_workbook_01.xlsx",
+      "source_sheet_name": "Influencer Month 1",
+      "canonical_brand_name": "synthetic_brand_01",
+      "brand_mapping_method": "private_mapping_config",
+      "brand_mapping_confidence": "high",
+      "business_verification_status": "pending",
+      "campaign_display_name": "synthetic_brand_01 | month_1",
+      "campaign_period_label": "month_1",
+      "period_resolution_method": "explicit_source_label",
+      "period_confidence": "high",
+      "platform": "tiktok"
+    }
+  ]
+}

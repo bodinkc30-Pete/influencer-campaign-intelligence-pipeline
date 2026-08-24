@@ -1,0 +1,31 @@
+{
+  "config_version": "temporal-reliability-v3",
+  "watermark": {
+    "max_staleness_days": 7
+  },
+  "late_arrival": {
+    "watermark_date": "2026-05-20",
+    "previous_arrival_cutoff": "2026-05-21",
+    "current_arrival_cutoff": "2026-05-25",
+    "backfill_lookback_days": 7
+  },
+  "slo": {
+    "max_freshness_lag_days": 2,
+    "critical_freshness_lag_days": 4,
+    "min_completeness_ratio": 0.99,
+    "critical_completeness_ratio": 0.98,
+    "max_watermark_lag_days": 2
+  },
+  "alert_escalation": {
+    "primary_channel": "portfolio_lab_primary",
+    "secondary_channel": "portfolio_lab_secondary",
+    "escalate_after_minutes": 30,
+    "escalate_severities": ["CRITICAL"]
+  },
+  "guardrails": {
+    "arrival_dates_are_controlled_synthetic_metadata": true,
+    "sla_is_not_invented_when_business_commitment_is_missing": true,
+    "backfill_uses_upsert_and_business_key_dedup": true,
+    "alert_delivery_is_simulated": true
+  }
+}

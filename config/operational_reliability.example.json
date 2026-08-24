@@ -1,0 +1,20 @@
+{
+  "config_version": "operational-reliability-v2",
+  "partial_load_fail_after_rows": 211,
+  "retry_policy": {
+    "max_attempts": 4,
+    "backoff_seconds": [1, 2, 4]
+  },
+  "monitoring_thresholds": {
+    "max_duration_seconds": 300,
+    "max_retry_count": 2,
+    "max_rejected_rows": 0,
+    "min_row_completeness": 1.0
+  },
+  "rules": {
+    "bad_incremental_state_is_blocking": true,
+    "staging_without_commit_is_blocking": true,
+    "retryable_dependency_failures_only": true,
+    "alerts_are_simulated_in_portfolio_lab": true
+  }
+}

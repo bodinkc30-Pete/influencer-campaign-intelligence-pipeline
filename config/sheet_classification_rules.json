@@ -1,0 +1,80 @@
+{
+  "rules_version": 1,
+  "candidate_header": {
+    "scan_rows": 20,
+    "min_score": 8,
+    "signals": {
+      "tiktok": 3,
+      "follower": 3,
+      "engagement": 2,
+      "budget": 2,
+      "selection": 1,
+      "influencer": 1
+    }
+  },
+  "name_rules": [
+    {
+      "sheet_type": "ads",
+      "patterns": [
+        "ads"
+      ]
+    },
+    {
+      "sheet_type": "sales_gmv",
+      "patterns": [
+        "gmv"
+      ]
+    },
+    {
+      "sheet_type": "live",
+      "patterns": [
+        "live",
+        "livesteaming"
+      ]
+    },
+    {
+      "sheet_type": "campaign_price",
+      "patterns": [
+        "price",
+        "campagine price",
+        "ค่าธรรมเนียม"
+      ]
+    },
+    {
+      "sheet_type": "shipment",
+      "patterns": [
+        "เบิกสินค้า",
+        "สำหรับการข"
+      ]
+    },
+    {
+      "sheet_type": "monthly_performance",
+      "patterns": [
+        "report oct",
+        "report nov",
+        "report dec"
+      ]
+    },
+    {
+      "sheet_type": "performance",
+      "patterns": [
+        "report influencer",
+        "report kols",
+        "report review"
+      ]
+    },
+    {
+      "sheet_type": "content_timeline",
+      "patterns": [
+        "content",
+        "timeline",
+        "revise",
+        "script",
+        "artwork",
+        "โพส คอนเทนต์",
+        "รายละเอียดคอนเทนต์"
+      ]
+    }
+  ],
+  "fallback_type": "other_operations"
+}

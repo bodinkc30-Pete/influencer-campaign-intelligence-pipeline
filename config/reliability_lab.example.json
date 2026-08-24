@@ -1,0 +1,9 @@
+{
+  "reliability_lab_version": 1,
+  "validation_mode": "exact_batch_replay",
+  "duplicate_hash_policy": "fail",
+  "missing_workbook_policy": "fail",
+  "candidate_schema_drift_policy": "fail_and_review",
+  "empty_expected_sheet_policy": "fail",
+  "same_batch_rerun_policy": "skip_already_processed"
+}

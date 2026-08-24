@@ -1,0 +1,40 @@
+﻿services:
+  postgres:
+    image: postgres:18.6
+    container_name: influencer-postgres
+
+    environment:
+      POSTGRES_USER: ${INFLUENCER_PG_USER}
+      POSTGRES_PASSWORD: ${INFLUENCER_PG_PASSWORD}
+      POSTGRES_DB: ${INFLUENCER_PG_DATABASE}
+
+    ports:
+      - "${INFLUENCER_PG_HOST_PORT}:5432"
+
+    volumes:
+      - influencer_pgdata:/var/lib/postgresql
+
+    networks:
+      - influencer-network
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U ${INFLUENCER_PG_USER} -d ${INFLUENCER_PG_DATABASE}"
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+
+    restart: unless-stopped
+
+volumes:
+  influencer_pgdata:
+    name: influencer_pgdata
+
+networks:
+  influencer-network:
+    name: influencer-network
+    driver: bridge

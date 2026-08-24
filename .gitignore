@@ -1,0 +1,49 @@
+# Private company source data
+*.xlsx
+!data/synthetic/*.xlsx
+
+# Private runtime/config evidence
+config/private/
+config/source_registry.yml
+data/raw/
+data/quarantine/
+data/private_audit/
+docs/private_audit/
+
+# Python/runtime
+__pycache__/
+.pytest_cache/
+*.py[cod]
+.env
+.venv/
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/
+
+# Private campaign/deliverable/performance outputs
+data/private_history/
+config/*_private.json
+config/deliverable_source_mapping.json
+
+# Private matching outputs / scenarios
+data/private_matching/
+config/matching_scenario_private.json
+
+# Private human-review / campaign feedback outputs
+# Real decisions, reviewer names and observed campaign outcomes stay private.
+data/private_feedback/
+config/feedback_scenario_private.json
+
+# Private reliability / incident evidence
+# Real source baselines, hashes, incident timelines and run evidence stay private.
+data/private_reliability/
+docs/private_incidents/
+config/reliability_lab_private.json
+
+# Private PostgreSQL warehouse load/evidence
+# Canonical company-derived CSVs and database runtime evidence stay outside the public repo.
+data/private_warehouse/
+docs/private_warehouse_evidence/
+config/warehouse_private.json

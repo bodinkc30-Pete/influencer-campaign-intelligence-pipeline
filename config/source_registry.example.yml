@@ -1,0 +1,26 @@
+registry_version: 1
+source_type: excel_workbook
+privacy_classification: private_company_data
+public_repository_policy: raw_files_forbidden
+
+workbooks:
+  - source_id: src_001
+    filename: "campaign_workbook_01.xlsx"
+    brand_label: "synthetic_brand_01"
+  - source_id: src_002
+    filename: "campaign_workbook_02.xlsx"
+    brand_label: "synthetic_brand_02"
+
+mvp_ingestion_scope:
+  include_sheet_types:
+    - influencer_candidate
+  defer_sheet_types:
+    - content_timeline
+    - live
+    - ads
+    - campaign_price
+    - shipment
+    - monthly_performance
+    - sales_gmv
+    - performance
+    - other_operations

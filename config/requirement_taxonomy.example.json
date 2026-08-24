@@ -1,0 +1,17 @@
+{
+  "campaign_theme": {
+    "skin_care": ["skin", "skincare", "hydration"],
+    "sleep_wellness": ["sleep", "bedtime", "rest"],
+    "pet_care": ["pet", "dog", "cat"]
+  },
+  "persona": {
+    "self_care": ["self-care"],
+    "pet_owner": ["pet owner"],
+    "office_worker": ["office worker"]
+  },
+  "content_style": {
+    "real_review": ["real review"],
+    "ugc": ["ugc"],
+    "vlog": ["vlog"]
+  }
+}

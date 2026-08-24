@@ -1,0 +1,11 @@
+{
+  "feature_version": "v1",
+  "grain": "one row per influencer_id",
+  "principles": {
+    "mix_live_viewers_with_content_views": false,
+    "merge_gmv_sales_revenue": false,
+    "fuzzy_identity_resolution": false,
+    "automatic_category_inference": false,
+    "automatic_recency_scoring_without_governed_dates": false
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "warehouse_version": "v1",
+  "database_engine": "postgresql",
+  "schemas": [
+    "stg",
+    "core",
+    "ops",
+    "mart"
+  ],
+  "load_order": [
+    "dim_influencer",
+    "influencer_identity_alias",
+    "dim_brand",
+    "dim_campaign",
+    "campaign_requirement",
+    "fact_campaign_influencer",
+    "fact_campaign_deliverable",
+    "fact_influencer_performance",
+    "fact_campaign_performance"
+  ],
+  "incremental_strategy": "business_key_upsert_in_transaction",
+  "idempotency_strategy": "batch_fingerprint_plus_primary_key_on_conflict",
+  "raw_company_data_allowed_in_public_repo": false,
+  "batch_identity": "sha256_manifest_of_nine_load_ready_csvs",
+  "same_batch_behavior": "record_skipped_run_no_copy_no_upsert_no_state_advance",
+  "run_stages": [
+    "PRE_LOAD",
+    "STAGING_LOAD",
+    "CORE_UPSERT",
+    "RECONCILIATION",
+    "COMPLETED"
+  ],
+  "runtime_dq_check_count": 8,
+  "password_handling": "PGPASSWORD_or_secure_prompt_never_evidence_json"
+}

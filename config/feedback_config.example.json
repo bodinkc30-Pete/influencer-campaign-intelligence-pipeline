@@ -1,0 +1,14 @@
+{
+  "feedback_contract_version": "feedback-v1",
+  "primary_review_limit": 10,
+  "allowed_human_decisions": ["selected", "rejected", "hold"],
+  "allowed_execution_statuses": ["planned", "in_progress", "completed", "cancelled"],
+  "business_success_definition": null,
+  "evaluation_guardrails": {
+    "require_all_human_decisions": true,
+    "require_completed_results_for_selected_candidates": true,
+    "allow_counterfactual_accuracy_claim": false,
+    "automatic_weight_calibration": false,
+    "machine_learning": false
+  }
+}

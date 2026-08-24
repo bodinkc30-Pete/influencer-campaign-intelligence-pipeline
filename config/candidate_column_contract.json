@@ -1,0 +1,16 @@
+{
+  "contract_version": 1,
+  "identity_header_terms": ["influencer", "tiktok", "link tiktok"],
+  "fields": {
+    "follower_raw": ["follower"],
+    "engagement_raw": ["engagement", "engangement"],
+    "budget_raw": ["budget", "buget"],
+    "historical_sales_raw": ["ยอดขาย", "kalodata"],
+    "audience_gender_raw": ["เพศผู้ติดตาม"],
+    "audience_age_raw": ["อายุผู้ติดตาม", "อายุผุ้ติดตาม"],
+    "selected_raw": ["เลือก"],
+    "confirmed_raw": ["คอนเฟิร์ม", "confirm"],
+    "pet_type_raw": ["pet", "สัตว์เลี้ยง"]
+  },
+  "pii_header_terms": ["ที่อยู่", "เบอร์", "โทร", "เลขพัสดุ", "tracking", "dhl"]
+}

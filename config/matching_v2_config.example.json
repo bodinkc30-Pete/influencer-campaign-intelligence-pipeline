@@ -1,0 +1,30 @@
+{
+  "config_version": "matching-v2",
+  "shortlist_size": 30,
+  "neutral_missing_score": 50.0,
+  "caps": {
+    "campaign_count": 5,
+    "brand_count": 3
+  },
+  "individual_budget_scopes": ["influencer_tiktok"],
+  "weights": {
+    "audience_gender_fit": 0.10,
+    "audience_age_fit": 0.10,
+    "theme_experience_fit": 0.12,
+    "persona_experience_fit": 0.08,
+    "content_style_experience_fit": 0.05,
+    "historical_experience": 0.08,
+    "cross_brand_experience": 0.05,
+    "selection_history": 0.08,
+    "view_performance": 0.12,
+    "budget_headroom": 0.05,
+    "operational_reliability": 0.05,
+    "data_confidence": 0.12
+  },
+  "guardrails": {
+    "machine_learning": false,
+    "fuzzy_identity_resolution": false,
+    "target_campaign_leakage": "forbidden",
+    "automatic_requirement_inheritance": false
+  }
+}

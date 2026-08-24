@@ -1,0 +1,21 @@
+{
+  "mapping_version": 1,
+  "sources": [
+    {
+      "source_filename": "Brand_A.xlsx",
+      "source_sheet_name": "Timeline Month 1",
+      "adapter": "influencer_content",
+      "campaign_id": "cmp_example_month1",
+      "mapping_method": "explicit_sheet_period",
+      "confidence": "high"
+    },
+    {
+      "source_filename": "Brand_A.xlsx",
+      "source_sheet_name": "Live Report",
+      "adapter": "campaign_live",
+      "campaign_id": "cmp_example_month1",
+      "mapping_method": "single_campaign_workbook",
+      "confidence": "high"
+    }
+  ]
+}
