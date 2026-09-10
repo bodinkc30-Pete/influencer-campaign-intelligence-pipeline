@@ -2,6 +2,8 @@
 
 **Portfolio Data Engineering project:** transform heterogeneous multi-brand / multi-campaign Excel data into a trusted Influencer Master, governed campaign and performance history, a PostgreSQL warehouse, and explainable campaign matching.
 
+**Portfolio positioning:** governed influencer master data that connects source provenance, historical campaign context, and explainable matching decisions.
+
 > This repository is a **portfolio / production-like engineering lab**. It demonstrates engineering design, testing, failure handling, reconciliation, and troubleshooting. It does **not** represent production ownership, enterprise on-call experience, or customer-impacting incident response.
 
 ---
@@ -270,13 +272,16 @@ Warehouse fingerprint from the validated full-data lab:
 ## Automated Testing
 
 ```text
-23  pytest test files
-155 automated Python tests
+24  pytest test files
+161 automated Python tests
+
+Frozen Core v1 release baseline : 23 test files / 155 tests
+Semantic evidence extension     : +1 test file / +6 tests
 ```
 
 Important boundary:
 
-> **155 tests is the repository-wide pytest baseline. It is not 155 integration tests and not 155 Data Quality-only tests.**
+> **161 tests is the current repository-wide pytest baseline. It is not 161 integration tests and not 161 Data Quality-only tests.** The frozen Core v1 release remains a verified 155-test snapshot; the six additional tests validate the post-completion semantic/public-evidence extension without changing core pipeline behavior.
 
 A **separate real PostgreSQL integration harness** validates the database runtime with synthetic public-safe data.
 
@@ -334,6 +339,7 @@ Source DQ
 → Reconciliation
 → Temporal DQ
 → Matching Leakage DQ
+→ Semantic DQ
 → Regression Tests
 ```
 
@@ -419,6 +425,98 @@ Key evidence:
 - [Identity Review Corroboration](docs/data_audit/identity_review_corroboration_v1.md)
 - [Manual Identity Review Contract](docs/data_audit/manual_identity_review_contract.md)
 - [Golden Master Promotion Contract](docs/contracts/golden_master_promotion_contract_v1.md)
+
+---
+
+# Business Context and Semantic Traceability
+
+The core project remains **COMPLETED**. This is a post-completion documentation and public-evidence extension that explains what trusted entities and metrics mean, where they come from, and how they support matching decisions.
+
+```text
+Raw identity / source evidence
+→ Canonical Influencer
+→ Campaign + Performance History
+→ Approved Metric Definitions
+→ Target-Excluded Matching Features
+→ Weighted Score + Reasons / Cautions
+→ Human Review
+```
+
+No core IDs, warehouse tables, historical calculations, or matching algorithm were redesigned for this extension.
+
+## Entity Semantic Contract
+
+The entity glossary distinguishes the business concept of an influencer from source identity observations, aliases, the canonical Golden Master, campaign participation, performance observations, matching candidates, and human decisions.
+
+Key rule:
+
+> Raw display names, handles, and URLs are source evidence. They are not trusted Master Data keys by themselves.
+
+See [Entity Semantic Contract](evidence/semantic/entity_glossary.md).
+
+## Business Glossary / Metric Catalog
+
+The metric catalog is grounded in the implemented `FEATURE_CONTRACT` and matching-v2 code. It documents grain, unit, null/evidence policy, source family, and whether each metric is allowed to influence matching.
+
+Important semantic boundaries remain explicit:
+
+```text
+content views != campaign/live viewers
+GMV != sales_amount != revenue
+source ROI / ROAS != validated universal Creator ROI
+missing evidence != invented evidence
+```
+
+Recency scoring remains intentionally unimplemented because historical chronology is not consistently governed across all sources.
+
+See [Metric Catalog](evidence/semantic/metric_catalog.md).
+
+## Context-to-Reason Mapping
+
+Each matching-v2 component is tied to approved input semantics rather than arbitrary generated text.
+
+```text
+Campaign Requirement
+→ source / historical evidence
+→ transformation rule
+→ component score
+→ configured weight
+→ total score
+→ positive reasons / cautions
+→ human review
+```
+
+A public-safe example is generated through the real `score_target_campaign` implementation and shows the candidate feature values, component scores, weighted result, leakage guard, and semantic trace.
+
+See [Synthetic Matching Explanation](evidence/semantic/matching_explanation_example.json).
+
+## Business-Context Lineage
+
+The signature lineage is:
+
+```text
+Source Workbook / Sheet / Row
+→ Source Identity / Alias Evidence
+→ Canonical influencer_id
+→ Campaign / Performance History
+→ Historical Feature
+→ Matching Component
+→ Candidate Score + Explanation
+→ Human Decision
+```
+
+See [Business-Context Lineage Example](evidence/semantic/lineage_example.md).
+
+## Semantic DQ and Public-Safe Evidence
+
+The extension adds six focused automated tests for semantic contracts and public evidence. They verify feature-contract uniqueness, matching weight completeness, required entity definitions, unresolved-identity behavior, synthetic matching traceability/leakage guardrails, and public-safety boundaries.
+
+Public evidence:
+
+- [Synthetic Identity Resolution Example](evidence/semantic/synthetic_identity_resolution_example.csv)
+- [Synthetic Matching Explanation](evidence/semantic/matching_explanation_example.json)
+- [Semantic DQ Result](evidence/semantic/semantic_dq_result.txt)
+- [Semantic Evidence Mapping](docs/portfolio/semantic_evidence_mapping_v1.md)
 
 ---
 
@@ -687,6 +785,8 @@ See:
 - [Explainable Matching Contract v1](docs/contracts/explainable_matching_contract_v1.md)
 - [Explainable Matching v2 Contract](docs/contracts/explainable_matching_v2_contract.md)
 - [Human Review / Feedback Contract](docs/contracts/human_review_feedback_contract_v1.md)
+- [Metric Catalog](evidence/semantic/metric_catalog.md)
+- [Synthetic Matching Explanation](evidence/semantic/matching_explanation_example.json)
 
 ---
 
@@ -786,8 +886,10 @@ failure recovery
 Current public baseline:
 
 ```text
-155 passed
+161 passed
 ```
+
+The frozen Core v1 release remains the earlier 155-test snapshot. The six additional tests cover this post-completion semantic/public-evidence extension.
 
 The pytest baseline is separate from the real PostgreSQL integration harness.
 
@@ -805,7 +907,7 @@ The CI workflow runs on push and pull request to `main`.
 Python 3.14
 dependency install
 compileall
-155-test regression suite
+full pytest regression suite
 Docker Compose configuration validation
 ```
 
@@ -907,6 +1009,15 @@ docs/
   reliability/
   warehouse/
 
+evidence/
+  semantic/
+    entity_glossary.md
+    metric_catalog.md
+    synthetic_identity_resolution_example.csv
+    matching_explanation_example.json
+    lineage_example.md
+    semantic_dq_result.txt
+
 sql/
   postgres/
     001_schemas_and_helpers.sql
@@ -927,6 +1038,7 @@ src/
 
 tests/
   unit / contract / regression tests
+  test_semantic_portfolio_evidence.py
   integration/
     generate_postgres_integration_fixture.py
     run_postgres_integration.py
@@ -961,7 +1073,7 @@ python -m pytest -q
 Expected validated baseline:
 
 ```text
-155 passed
+161 passed
 ```
 
 ## 3. Validate Docker Compose configuration
@@ -1037,6 +1149,12 @@ For reviewers who want to go beyond the README:
 | Column / table semantics | [Data Dictionary](docs/warehouse/data_dictionary_v1.md) |
 | Data Quality evidence | [DQ Summary](docs/portfolio/data_quality_summary_v1.md) |
 | Test evidence | [Testing Evidence](docs/portfolio/testing_evidence_v1.md) |
+| Semantic business-context mapping | [Semantic Evidence Mapping](docs/portfolio/semantic_evidence_mapping_v1.md) |
+| Entity definitions | [Entity Semantic Contract](evidence/semantic/entity_glossary.md) |
+| Metric definitions | [Metric Catalog](evidence/semantic/metric_catalog.md) |
+| Explainable matching example | [Synthetic Matching Explanation](evidence/semantic/matching_explanation_example.json) |
+| Business-context lineage | [Lineage Example](evidence/semantic/lineage_example.md) |
+| Semantic/public-safety DQ | [Semantic DQ Result](evidence/semantic/semantic_dq_result.txt) |
 | Capability → evidence traceability | [Portfolio Evidence Map](docs/portfolio/portfolio_evidence_map_v1.md) |
 | Thailand job responsibility alignment | [Job Responsibility Mapping](docs/portfolio/job_responsibility_mapping_v1.md) |
 | Source failure experiments | [Reliability Failure Lab](docs/reliability/reliability_failure_lab_v1.md) |
@@ -1274,6 +1392,7 @@ validated a real PostgreSQL synthetic integration flow
 implemented controlled reliability experiments
 troubleshot a real hosted portfolio CI failure
 implemented explainable rule-based ranking
+documented traceable entity / metric semantics and public-safe matching explanations
 ```
 
 Claims this repository does **not** make:

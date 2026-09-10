@@ -1,0 +1,5 @@
+source_observation_id,source_type,raw_identity_value,normalized_handle,resolution_method,review_required,canonical_influencer_id,synthetic_provenance,public_safety
+obs_syn_001,raw_handle,@creator_alpha,creator_alpha,exact_normalized_handle,false,inf_syn_001,synthetic_workbook_A.xlsx|Candidates|12,SYNTHETIC
+obs_syn_002,profile_url,https://www.tiktok.com/@creator_alpha,creator_alpha,exact_profile_handle,false,inf_syn_001,synthetic_workbook_B.xlsx|CreatorList|8,SYNTHETIC
+obs_syn_003,display_name_with_handle,Creator Alpha (@creator_alpha),creator_alpha,reviewed_evidence,true,inf_syn_001,synthetic_workbook_C.xlsx|Shortlist|21,SYNTHETIC
+obs_syn_004,raw_handle,@creator_alphx,creator_alphx,manual_review_pending,true,,synthetic_workbook_D.xlsx|Candidates|15,SYNTHETIC

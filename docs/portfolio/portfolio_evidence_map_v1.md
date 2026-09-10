@@ -4,6 +4,8 @@
 
 This document maps the major engineering capabilities in the **Influencer Campaign Intelligence Pipeline** to concrete implementation, automated tests, runtime/reconciliation evidence, and public-safe portfolio documentation.
 
+> **Snapshot boundary:** this v1 map captures the frozen Core v1 evidence baseline before the post-completion semantic/business-context extension. The later extension is documented in `docs/portfolio/semantic_evidence_mapping_v1.md` and `evidence/semantic/`; it adds documentation/public evidence plus 6 focused tests without changing core pipeline behavior.
+
 The traceability pattern is:
 
 ```text
@@ -62,7 +64,7 @@ Fix Applied != Recovery Proven
 
 ## 3. Repository Evidence Baseline
 
-Current public repository evidence includes:
+Frozen Core v1 public repository evidence included:
 
 ```text
 116 tracked files
@@ -78,7 +80,7 @@ Current public repository evidence includes:
 1 GitHub Actions workflow
 ```
 
-Current automated pytest baseline:
+Frozen Core v1 automated pytest baseline:
 
 ```text
 23 test_*.py files

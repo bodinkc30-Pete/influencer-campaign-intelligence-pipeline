@@ -4,6 +4,8 @@
 
 This document summarizes the **public-safe testing evidence** for the Influencer Campaign Intelligence Pipeline.
 
+> **Snapshot boundary:** this v1 document records the frozen Core v1 release baseline of **23 pytest files / 155 tests**. A post-completion semantic/business-context evidence extension later added **1 focused test file / 6 tests**, making the current repository baseline **24 pytest files / 161 tests** without changing core pipeline behavior. See `evidence/semantic/semantic_dq_result.txt`.
+
 It separates four different validation layers so that the portfolio does not overclaim test coverage:
 
 ```text
@@ -44,14 +46,14 @@ A process is not considered trusted only because a command exits successfully. D
 
 ---
 
-## 2. Current Automated Test Baseline
+## 2. Frozen Core v1 Automated Test Baseline
 
-The current repository inventory contains:
+The frozen Core v1 release inventory contains:
 
 ```text
 23 test_*.py files
 155 pytest test functions
-155 passed in the current local regression baseline
+155 passed in the frozen Core v1 local regression baseline
 ```
 
 `pytest.ini` currently contains:
@@ -64,7 +66,7 @@ testpaths = tests
 
 There are no custom pytest markers in the current configuration. Therefore, the test-layer grouping in this document is a **portfolio evidence classification**, not a pytest marker taxonomy.
 
-The `155` figure is the repository-wide automated pytest baseline. It must **not** be described as:
+The `155` figure is the frozen Core v1 repository-wide automated pytest baseline. It must **not** be described as:
 
 ```text
 155 PostgreSQL integration tests
@@ -153,7 +155,7 @@ Purpose:
 Do the repository's automated contract / logic / failure-path tests still pass?
 ```
 
-Current baseline:
+Frozen Core v1 baseline:
 
 ```text
 155 passed
@@ -665,8 +667,8 @@ The evidence is intentionally narrower and verifiable.
 
 ```text
 Automated test files                     23
-Automated pytest test functions          155
-Current local pytest baseline            155 passed
+Frozen Core v1 pytest test functions     155
+Frozen Core v1 local pytest baseline     155 passed
 
 Dedicated integration assets             2
 Synthetic integration CSVs               9
@@ -718,7 +720,7 @@ conclusion success
 Accurate statements supported by this project include:
 
 ```text
-I built a 155-test automated regression suite across 23 pytest files.
+For the frozen Core v1 release, I built a 155-test automated regression suite across 23 pytest files; the later semantic evidence extension adds 6 focused tests for a current total of 161.
 
 I separated fast contract/logic tests from a real PostgreSQL integration harness.
 
