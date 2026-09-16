@@ -7,3 +7,7 @@
 *.zip binary
 *.xlsx binary
 *.xls binary
+
+# Include genuine SQL source files in GitHub Linguist language statistics.
+*.sql linguist-detectable=true
+
